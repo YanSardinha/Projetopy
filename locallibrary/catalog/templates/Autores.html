@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/records.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <script src="{% static 'main.js' %}" defer></script>
+
+    <title>ProjetoPy</title>
+</head>
+<body>
+    <header>
+        <h1 class="header-title">Listagem para Autores</h1>
+    </header>
+    <main>
+         <a href="{% url 'logout' %}">
+        <button type="button" class="button blue mobile" id="cadastrarCliente">Cadastrar Autor</button>
+         </a>
+        <table class="records">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for autor in object_list %}
+                <tr>
+                    <td>{{autor.nome}}</td>
+                    <td>{{autor.cpf}}</td>
+                    <td>{{autor.telefone}}</td>
+                    <td>{{autor.endereco}}</td>
+                    <td>
+                        <a href="{% url 'logout' %}">
+                        <button type="button" class="button green">editar</button>
+                        </a>
+                         <a href="{% url 'logout' %}">
+                        <button type="button" class="button red">excluir</button>
+                         </a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2>Novo Cliente</h2>
+                    <span class="modal-close" id="modalClose">&#10006;</span>
+                </header>
+                <form class="modal-form">
+                    <input type="text" class="modal-field" placeholder="Nome do Cliente">
+                    <input type="email" class="modal-field" placeholder="e-mail do Cliente">
+                    <input type="text" class="modal-field" placeholder="Celular do Cliente">
+                    <input type="text" class="modal-field" placeholder="Cidade do Cliente">
+                </form>
+                <footer class="modal-footer">
+                    <button class="button green">Salvar</button>
+                    <button class="button blue">Cancelar</button>
+                </footer>
+            </div>
+        </div>
+    </main>
+    <footer>
+        Copyright &copy; Academica: Fernanda
+    </footer>
+</body>
+</html>
