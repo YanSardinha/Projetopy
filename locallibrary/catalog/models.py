@@ -1,7 +1,6 @@
 from django.db import models
-from django.urls import reverse
-import uuid
-#Create your models here.
+
+
 class Autor(models.Model):
 
     nome = models.CharField(max_length=50)
@@ -22,6 +21,7 @@ class Auxiliar(models.Model):
 
     def __str__(self):
         return self.nome
+    
 
 class EnviarProjeto(models.Model):
 
@@ -44,14 +44,13 @@ class Avaliador(models.Model):
     def __str__(self):
         return self.nome
 
+
 class AvaliarProjeto(models.Model):
 
     avaliador = models.ForeignKey(Avaliador,models.CASCADE, verbose_name="Avaliador")
     parecer = models.CharField(max_length=50)
     nota = models.DecimalField(max_digits=4,decimal_places=2)
     dataAvaliacao = models.DateField(null=False)
-
-
 
 
 class Premio(models.Model):
@@ -63,5 +62,3 @@ class Premio(models.Model):
 
     def __str__(self):
          return self.nome
-
-

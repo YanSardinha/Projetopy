@@ -1,9 +1,5 @@
 from django import forms
-from .models import Autor
-from .models import Avaliador
-from .models import EnviarProjeto
-from .models import AvaliarProjeto
-from .models import Premio
+from .models import Autor, Avaliador, EnviarProjeto, AvaliarProjeto, Premio
 
 
 # creating a form
@@ -14,13 +10,8 @@ class AutorForm(forms.ModelForm):
         model = Autor
 
         # specify fields to be used
-        fields = [
-            "nome",
-            "cpf",
-            "telefone",
-            "endereco"
+        fields = "__all__"
 
-        ]
 
 class AvaliadorForm(forms.ModelForm):
     # create meta class
@@ -29,54 +20,34 @@ class AvaliadorForm(forms.ModelForm):
         model = Avaliador
 
         # specify fields to be used
-        fields = [
-            "nome",
-            "cpf",
-            "telefone",
-            "endereco"
+        fields = "__all__"
 
-        ]
 
-class   EnviarProjetoForm(forms.ModelForm):
+class EnviarProjetoForm(forms.ModelForm):
     # create meta class
     class Meta:
         # specify model to be used
         model = EnviarProjeto
 
         # specify fields to be used
-        fields = [
-            "area",
-            "titulo",
-            "resumo",
-            "dataEnvio"
+        fields = "__all__"
 
-        ]
-class   AvaliarProjetoForm(forms.ModelForm):
+
+class AvaliarProjetoForm(forms.ModelForm):
     # create meta class
     class Meta:
         # specify model to be used
         model = AvaliarProjeto
 
         # specify fields to be used
-        fields = [
-            "avaliador",
-            "parecer",
-            "nota",
-            "dataAvaliacao"
+        fields = "__all__"
 
-        ]
 
-class   PremioForm(forms.ModelForm):
+class PremioForm(forms.ModelForm):
     # create meta class
     class Meta:
         # specify model to be used
         model = Premio
 
         # specify fields to be used
-        fields = [
-            "nome",
-            "descricao",
-            "cronograma",
-            "autor"
-
-        ]
+        fields = "__all__"
